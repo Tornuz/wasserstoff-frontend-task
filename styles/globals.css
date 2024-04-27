@@ -2,32 +2,187 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.main {
+  color: black;
+  background: #FFF4DF;
+
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.mainContainer h1 {
+  font-size: 3.7rem;
+}
+
+
+
+
+
+
+.early p {
+  font-size: 60px;
+  line-height: 100%;
+  
+}
+
+
+.exampleLeft {
+  /* white-space: nowrap; */
+  position: absolute;
+  background: #FFF4DF!important;
+}
+
+
+.exampleLeft {
+  -webkit-animation: mymove 1.5s linear infinite; /* Safari 4.0 - 8.0 */
+  white-space: nowrap;
+  animation: mymove 1.5s linear infinite alternate;
+}
+
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {
+    right: 0;
+  }
+  to {
+    right: 10%;
+  }
+}
+
+@keyframes mymove {
+  from {
+    right: 0;
+  }
+  to {
+    right: 10%;
+  }
+}
+
+
+@keyframes early
+{ from { opacity:1; } to { opacity:0; } }
+
+.early {
+    animation:fadeIn ease-in 3; /* call our keyframe named fadeIn, use animation ease-in and repeat it only 1 time */
+
+    animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+    animation-duration: 1s;
+    /* animation-delay: 1s */
+}
+
+
+.early2 p {
+  font-size: 60px;
+  line-height: 100%;
+  color: #FFF4DF;
+}
+
+
+.exampleLeft2 {
+  /* white-space: nowrap; */
+  position: absolute;
+  background: #FFF4DF!important;
+}
+
+
+.exampleLeft2 {
+  -webkit-animation: mymove2 2s linear infinite; /* Safari 4.0 - 8.0 */
+  white-space: nowrap;
+  animation: mymove2 2s linear infinite alternate;
+}
+
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove2 {
+  from {
+    right: -10%;
+  }
+  to {
+    right: -1%;
+  }
+}
+
+@keyframes mymove2 {
+  from {
+    right: -10%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+
+@keyframes early2
+{ from { opacity:1; } to { opacity:0; } }
+
+.early2 {
+    animation:fadeIn ease-in 2; /* call our keyframe named fadeIn, use animation ease-in and repeat it only 1 time */
+
+    animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+    animation-duration: 1s;
+    animation-delay: 1s
+}
+
+.early3 p {
+  font-size: 60px;
+  line-height: 100%;
+}
+
+
+.exampleLeft3 {
+  /* white-space: nowrap; */
+  position: absolute;
+  background: #FFF4DF!important;
+}
+
+
+.exampleLeft3 {
+  -webkit-animation: mymove3 2s linear infinite; /* Safari 4.0 - 8.0 */
+  white-space: nowrap;
+  animation: mymove3 2s linear infinite alternate;
+}
+
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove3 {
+  from {
+    right: 0;
+  }
+  to {
+    right: 10%;
+  }
+}
+
+@keyframes mymove3 {
+  from {
+    right: 0;
+  }
+  to {
+    right: 10%;
+  }
+}
+
+
+@keyframes early3
+{ from { opacity:1; } to { opacity:0; } }
+
+.early3 {
+    animation:fadeIn ease-in 2; /* call our keyframe named fadeIn, use animation ease-in and repeat it only 1 time */
+
+    animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+    animation-duration: 1s;
+    animation-delay: 1s;
 }
