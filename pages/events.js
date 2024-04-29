@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "@/styles/events.module.css";
-import { useRouter } from 'next/navigation'
+import styles from "@/styles/styles.module.css";
+import { useRouter } from "next/navigation";
 
 const events = () => {
-  const router = useRouter()
+  const router = useRouter();
 
+  // An array of images for carousel
   const slides = [
     {
       id: 1,
@@ -28,7 +29,7 @@ const events = () => {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0); // state to track the index os slides
   const [isActive, setIsActive] = useState(true); // State to track the active state
 
   useEffect(() => {
@@ -72,6 +73,8 @@ const events = () => {
                   <h1>NTS</h1>
                 </span>
               </div>
+              {/* Mapping through slides to render the carousel slides */}
+
               <div className={styles.slideshow}>
                 <div className={`mt-10 ${styles.slideshowSlider}`}>
                   {slides.map((slide, index) => (
@@ -79,27 +82,30 @@ const events = () => {
                       className={`${styles.slide}`}
                       key={slide.id}
                       style={{
-                        opacity: index===currentIndex ? 1 : 0.8,
+                        opacity: index === currentIndex ? 1 : 0.8,
                         transform: `translate3d(${
                           (index - currentIndex) * 100
                         }%, 0, 0)`,
                       }}
                     >
-                      <Image className="relative"
+                      <Image
+                        className="relative"
                         src={slide.image}
                         width={450}
                         height={550}
                         alt="Picture"
                       />
-                      {
-                        index===currentIndex ? "" : <p className={styles.imgLogo}>Event Name</p>
-                      }
-                      
+                      {index === currentIndex ? (
+                        ""
+                      ) : (
+                        <p className={styles.imgLogo}>Event Name</p>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
             </div>
+            {/* Routing Buttons to navigate from events to collections and vice-versa */}
 
             <div className={`mt-32 ${styles.form}`}>
               <div className={styles.radioBlock}>
@@ -116,7 +122,11 @@ const events = () => {
                   checked={!isActive}
                   onChange={handleToggle}
                 />
-                <label onClick={() => router.push('/collections')} htmlFor="contrasts-off" className={styles.offLabel}>
+                <label
+                  onClick={() => router.push("/collections")}
+                  htmlFor="contrasts-off"
+                  className={styles.offLabel}
+                >
                   Collections
                 </label>
                 <span className={styles.selected} aria-hidden="true"></span>
@@ -124,21 +134,21 @@ const events = () => {
             </div>
           </div>
 
-          
+          {/* Middle line with the Animated texts */}
 
-        <span className={`w-20 h-screen ml-auto ${styles.spn}`}>
-        <div className={`${styles.early}`}>
+          <span className={`w-20 h-screen ml-auto ${styles.spn}`}>
+            <div className={`${styles.early}`}>
+              <div className={styles.article}>
+                <p class={styles.exampleLeft}>
+                  Event : Oasis Bus tour , JLN Stadium , Delhi{" "}
+                  <span className={styles.symbol}>*</span> Collection Live :
+                  Meta Lives , live on astrix{" "}
+                </p>
+              </div>
+            </div>
+          </span>
 
-          <div className={styles.article}>
-            <p class={styles.exampleLeft}>
-              Event : Oasis Bus tour , JLN Stadium , Delhi{" "}
-              <span className={styles.symbol}>*</span> Collection Live : Meta
-              Lives , live on astrix{" "}
-            </p>
-          </div>
-        </div>
-
-        </span>
+          {/* Covering the right side of the page of the middle moving texts line */}
 
           <div className={` ${styles.right}`}>
             <div className="p-5">
@@ -211,10 +221,7 @@ const events = () => {
               </div>
             </div>
           </div>
-
-        
         </div>
-
       </main>
     </>
   );

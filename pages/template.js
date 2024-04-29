@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 export default function Template({children}) {
+    // Adding transitions to every routes
     return(
         <motion.div 
         initial={{y: 20, opacity: 0}}

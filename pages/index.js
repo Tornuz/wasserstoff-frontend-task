@@ -8,7 +8,12 @@ export default function Home() {
 
   const router = useRouter()
   return (
-    <main onClick={() => router.push('/events')} className={`main min-h-screen p-20 ${inter.className}`}>
+
+    // Main component covering Home page of vertical screen height
+    // and to navigate to the next page
+     
+    <main onClick={() => router.push('/collections')} className={`main min-h-screen p-20 ${inter.className}`}>
+      {/* Main top Logo of Astro */}
       <div className=" w-full">
         <Image
           src="/AstrixLogo.png"
@@ -17,6 +22,8 @@ export default function Home() {
           alt="Picture of the logo"
         />
       </div>
+
+{/* Main Flex div to center the content both horizontally and vertically */}
 
       <div  className="flex flex-column items-center justify-center ">
         <div  className="">
@@ -30,6 +37,8 @@ export default function Home() {
                 height={300}
                 alt="Picture on the 1st line"
               />
+
+              {/* Animating by moving text components */}
 
               <div className="early">
                 <p className="pl-2 exampleLeft">ORGANISE THE</p>

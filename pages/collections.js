@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "@/styles/events.module.css";
+import styles from "@/styles/styles.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 const collections = () => {
+  const router = useRouter();
 
-  const router = useRouter()
-
+  // An array of images for carousel
   const slides = [
     {
       id: 1,
@@ -31,7 +31,7 @@ const collections = () => {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0); // state to track the index os slides
   const [isActive, setIsActive] = useState(true); // State to track the active state
 
   useEffect(() => {
@@ -46,6 +46,7 @@ const collections = () => {
     setIsActive(!isActive); // Toggle the active state
   };
 
+  // Responsive properties for the Carousel componenent
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -95,21 +96,28 @@ const collections = () => {
                   <h1>BLE</h1>
                 </span>
               </div>
+              {/* Mapping through slides to render the carousel slides */}
               <div className={styles.slideshow}>
                 <div className={styles.slideshowSlider}>
-                
                   {slides.map((slide, index) => (
                     <div
                       className={styles.slide}
                       key={slide.id}
                       style={{
-                        opacity: index===currentIndex ? 1 : 0.8,
+                        opacity: index === currentIndex ? 1 : 0.8,
                         transform: `translate3d(${
                           (index - currentIndex) * 100
                         }%, 0, 0)`,
                       }}
                     >
-                    <p className="text-xl">{(index===currentIndex) || (index === currentIndex+1) ? "Lunar Palace\n(ft.Kanye West)" : <span className="text-transparent h-10">H</span> }</p>
+                      <p className="text-xl">
+                        {index === currentIndex ||
+                        index === currentIndex + 1 ? (
+                          "Lunar Palace\n(ft.Kanye West)"
+                        ) : (
+                          <span className="text-transparent h-10">H</span>
+                        )}
+                      </p>
                       <Image
                         src={slide.image}
                         width={450}
@@ -122,6 +130,8 @@ const collections = () => {
               </div>
             </div>
 
+            {/* Routing Buttons to navigate from events to collections and vice-versa */}
+
             <div className={`mt-14 ${styles.form}`}>
               <div className={styles.radioBlock}>
                 <input
@@ -130,7 +140,12 @@ const collections = () => {
                   checked={!isActive}
                   onChange={handleToggle}
                 />
-                <label onClick={() => router.push('/events')}  htmlFor="contrasts-on">Events</label>
+                <label
+                  onClick={() => router.push("/events")}
+                  htmlFor="contrasts-on"
+                >
+                  Events
+                </label>
                 <input
                   type="radio"
                   id="contrasts-off"
@@ -145,20 +160,20 @@ const collections = () => {
             </div>
           </div>
 
+          {/* Middle line with the Animated texts */}
           <span className={`w-20 h-screen ml-auto ${styles.spn}`}>
-        <div className={`${styles.early}`}>
+            <div className={`${styles.early}`}>
+              <div className={styles.article}>
+                <p class={styles.exampleLeft}>
+                  Event : Oasis Bus tour , JLN Stadium , Delhi{" "}
+                  <span className={styles.symbol}>*</span> Collection Live :
+                  Meta Lives , live on astrix{" "}
+                </p>
+              </div>
+            </div>
+          </span>
 
-          <div className={styles.article}>
-            <p class={styles.exampleLeft}>
-              Event : Oasis Bus tour , JLN Stadium , Delhi{" "}
-              <span className={styles.symbol}>*</span> Collection Live : Meta
-              Lives , live on astrix{" "}
-            </p>
-          </div>
-        </div>
-
-        </span>
-
+{/* Covering the right side of the page of the middle moving texts line */}
           <div className={` ${styles.right}`}>
             <div className="p-4">
               <p className={styles.rightTitle}>
@@ -194,7 +209,7 @@ const collections = () => {
               </div>
               <div className="mt-2">
                 <Carousel
-                arrows={false}
+                  arrows={false}
                   additionalTransfrom={0}
                   centerMode={false}
                   className=""
@@ -205,41 +220,36 @@ const collections = () => {
                   focusOnSelect={false}
                   itemClass=""
                   keyBoardControl
-                    minimumTouchDrag={80}
-
+                  minimumTouchDrag={80}
                   responsive={responsive}
                   rtl={false}
                   sliderClass=""
                   slidesToSlide={1}
                   swipeable
                 >
-                  
-                  
-                    <Image
-                      className=""
-                      src="/Card Small.png"
-                      width={130}
-                      height={10}
-                      alt="Picture of the location"
-                    />
-                  
-                    <Image
-                      className=""
-                      src="/Card Small.png"
-                      width={130}
-                      height={10}
-                      alt="Picture of the location"
-                    />
-                  
-                    <Image
-                      className=""
-                      src="/Card Small.png"
-                      width={130}
-                      height={10}
-                      alt="Picture of the location"
-                    />
-                 
-                  
+                  <Image
+                    className=""
+                    src="/Card Small.png"
+                    width={130}
+                    height={10}
+                    alt="Picture of the location"
+                  />
+
+                  <Image
+                    className=""
+                    src="/Card Small.png"
+                    width={130}
+                    height={10}
+                    alt="Picture of the location"
+                  />
+
+                  <Image
+                    className=""
+                    src="/Card Small.png"
+                    width={130}
+                    height={10}
+                    alt="Picture of the location"
+                  />
                 </Carousel>
               </div>
               <div className="flex mt-4">
@@ -250,7 +260,6 @@ const collections = () => {
             </div>
           </div>
         </div>
-        
       </main>
     </>
   );
